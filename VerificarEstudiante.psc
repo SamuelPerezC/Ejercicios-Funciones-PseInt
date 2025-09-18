@@ -1,25 +1,29 @@
-Funcion LeerEsEstudiante() Como Logico
-	Definir resp Como Cadena
-	Definir valor Como Logico
+Funcion esEstudiante <- AsignarEstudiante
+	Definir respuesta Como Cadena
+	Definir esEstudiante Como Logico
 	
-	Escribir "¿Es usted estudiante? Escriba Verdadero o Falso:"
-	Leer resp
+	Escribir "Â¿Es usted estudiante? Escriba Verdadero o Falso:"
+	Leer respuesta
 	
-	Si resp = "Verdadero" Entonces
-		valor <- Verdadero
+	// VA ACEPTAR LAS MINUSCULAS SI LAS ESCRIBO
+	respuesta <- Minusculas(respuesta)
+	
+	Si respuesta = "verdadero" Entonces
+		esEstudiante <- Verdadero
 	SiNo
-		valor <- Falso
+		esEstudiante <- Falso
 	FinSi
-	
-	Retornar valor
+FinFuncion
+
+Funcion MostrarMensaje(esEstudiante)
+	Si esEstudiante = Verdadero Entonces
+		Escribir "Â¡Bienvenido estudiante!"
+	FinSi
 FinFuncion
 
 Algoritmo VerificarEstudiante
 	Definir esEstudiante Como Logico
 	
-	// Llamamos la función y guardamos su valor
-	esEstudiante <- LeerEsEstudiante()
-	
-	// Mostramos el resultado
-	Escribir "¿Es usted estudiante? [Verdadero/Falso]: ", esEstudiante
+	esEstudiante <- AsignarEstudiante
+	MostrarMensaje(esEstudiante)
 FinAlgoritmo
