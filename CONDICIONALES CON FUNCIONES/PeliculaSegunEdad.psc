@@ -24,13 +24,13 @@ FinFuncion
 Funcion MostrarRecomendacion(categoria)
 	Segun categoria Hacer
         1:
-            Escribir "Recomendaci髇: Pel韈ulas animadas y educativas aptas para todas las edades."
+            Escribir "Recomendaci贸n: Pel铆culas animadas y educativas aptas para todas las edades."
         2:
-            Escribir "Recomendaci髇: Animaciones, aventuras y comedias familiares."
+            Escribir "Recomendaci贸n: Animaciones, aventuras y comedias familiares."
         3:
-            Escribir "Recomendaci髇: Acci髇, drama, comedia y ciencia ficci髇."
+            Escribir "Recomendaci贸n: Acci贸n, drama, comedia y ciencia ficci贸n."
         4:
-            Escribir "Recomendaci髇: Pel韈ulas cl醩icas y dramas."
+            Escribir "Recomendaci贸n: Pel铆culas cl谩sicas y dramas."
     FinSegun
 FinFuncion
 
@@ -43,4 +43,5 @@ Algoritmo AsistenteCine
     categoria <- determinarCategoria(edad)
 	MostrarRecomendacion(categoria)
 FinAlgoritmo
+
 
