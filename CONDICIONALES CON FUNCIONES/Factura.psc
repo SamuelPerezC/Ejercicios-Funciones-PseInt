@@ -16,20 +16,15 @@ Funcion precio <- PedirPrecio(mensaje)
 	Leer precio
 FinFuncion
 
-SubProceso CalcularSubtotal(cantidad, precio_unitario, es_estudiante,subtotal Por Referencia, impuesto Por Referencia, total Por Referencia)
-	subtotal <- cantidad * precio_unitario
-	
+Funcion porcentaje <- CalcularImpuesto(es_estudiante)
 	Si Mayusculas(es_estudiante) = "SI" Entonces
-		impuesto <- subtotal * 0.05
+		porcentaje <- 0.05
 	SiNo
-		impuesto <- subtotal * 0.13
+		porcentaje <- 0.13
 	FinSi
-	
-	total <- subtotal + impuesto
-FinSubProceso
+FinFuncion
 
-
-SubProceso MostrarFactura(nombre_cliente, tipo_cliente, producto, cantidad, precio_unitario, subtotal, impuesto, total)
+Funcion  MostrarFactura(nombre_cliente, tipo_cliente, producto, cantidad, precio_unitario, subtotal, impuesto, total)
 	Escribir "========== FACTURA =========="
 	Escribir "Cliente: ", nombre_cliente
 	Escribir "Tipo de cliente: ", tipo_cliente
@@ -41,28 +36,29 @@ SubProceso MostrarFactura(nombre_cliente, tipo_cliente, producto, cantidad, prec
 	Escribir "Impuesto aplicado: $", impuesto
 	Escribir "TOTAL A PAGAR: $", total
 	Escribir "=============================="
-FinSubProceso
+FinFuncion
 
 Algoritmo Factura
 	// Declarar variables
 	Definir nombre_cliente, producto, es_estudiante, tipo_cliente Como Cadena
 	Definir cantidad Como Entero
-	Definir subtotal, impuesto, total, precio_unitario Como Real
+	Definir subtotal, impuesto, total, precio_unitario, porcentaje_impuesto Como Real
 	
 	// Pedir datos al usuario
 	nombre_cliente <- PedirDato("Ingrese el nombre del cliente: ")
 	tipo_cliente <- PedirDato("Ingrese el tipo de cliente (A, B, C...): ")
 	producto <- PedirDato("Ingrese el producto: ")
-	es_estudiante <- PedirDato("¿El cliente es estudiante? (SI/NO): ")
+	es_estudiante <- PedirDato("Â¿El cliente es estudiante? (SI/NO): ")
 	
 	cantidad <- PedirMonto("Ingrese la cantidad de productos: ")
 	precio_unitario <- PedirPrecio("Ingrese el precio unitario: ")
 	
-	// Procesar datos
-	CalcularSubtotal(cantidad, precio_unitario, es_estudiante, subtotal, impuesto, total)
+	// Calcular valores
+	subtotal <- cantidad * precio_unitario
+	porcentaje_impuesto <- CalcularImpuesto(es_estudiante)
+	impuesto <- subtotal * porcentaje_impuesto
+	total <- subtotal + impuesto
 	
 	// Mostrar factura
 	MostrarFactura(nombre_cliente, tipo_cliente, producto, cantidad, precio_unitario, subtotal, impuesto, total)
 FinAlgoritmo
-
-
