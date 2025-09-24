@@ -1,4 +1,4 @@
-// Función para mostrar el menú
+// FunciÃ³n para mostrar el menÃº
 Funcion MostrarMenu()
     Escribir "1. PESCADO - $15000"
     Escribir "2. POLLO   - $20000"
@@ -6,77 +6,62 @@ Funcion MostrarMenu()
     Escribir "4. GASEOSA - $4000"
 FinFuncion
 
-// Función para obtener precio y nombre del producto
-Funcion ObtenerProducto(opcion, precio, nombre)
+// FunciÃ³n para obtener precio y nombre del producto
+Funcion ObtenerProducto(opcion, precio Por Referencia, nombre Por Referencia)
     Segun opcion Hacer
         1:
             precio <- 15000
             nombre <- "PESCADO"
-            Escribir "Usted seleccionó PESCADO"
+            Escribir "Usted seleccionÃ³ PESCADO"
         2:
             precio <- 20000
             nombre <- "POLLO"
-            Escribir "Usted seleccionó POLLO"
+            Escribir "Usted seleccionÃ³ POLLO"
         3:
             precio <- 5000
             nombre <- "AGUA"
-            Escribir "Usted seleccionó AGUA"
+            Escribir "Usted seleccionÃ³ AGUA"
         4:
             precio <- 4000
             nombre <- "GASEOSA"
-            Escribir "Usted seleccionó GASEOSA"
+            Escribir "Usted seleccionÃ³ GASEOSA"
         De Otro Modo:
             precio <- 0
-            nombre <- "OPCIÓN INVÁLIDA"
-            Escribir "Opción no válida"
+            nombre <- "OPCIÃ“N INVÃLIDA"
+            Escribir "OpciÃ³n no vÃ¡lida"
     FinSegun
-FinFuncion
-
-// Función para procesar un pedido
-Funcion ProcesarPedido(i, costo_total, texto_dato)
-    Definir opcionPedido Como Entero
-    Definir precio Como Real
-    Definir nombre Como Cadena
-	
-    Escribir ""
-    Escribir "Pedido ", i
-    MostrarMenu()
-    Escribir "Seleccione una opción (1-4): "
-    Leer opcionPedido
-	
-    ObtenerProducto(opcionPedido, precio, nombre)
-	
-    Si precio > 0 Entonces
-        costo_total <- costo_total + precio
-        texto_dato <- texto_dato + " - " + nombre
-    FinSi
-FinFuncion
-
-// Función para mostrar la factura
-Funcion MostrarFactura(costo_total, texto_dato)
-    Escribir ""
-    Escribir "===== FACTURA FINAL ====="
-    Escribir "Total a pagar: $", costo_total
-    Escribir texto_dato
 FinFuncion
 
 // ===== ALGORITMO PRINCIPAL =====
 Algoritmo RestauranteConFunciones
-    Definir N, i Como Entero
-    Definir costo_total Como Real
-    Definir texto_dato Como Cadena
+    Definir N, i, opcion Como Entero
+    Definir costo_total, precio Como Real
+    Definir texto_dato, nombre Como Cadena
 	
     costo_total <- 0
     texto_dato <- ""
 	
-    Escribir "¿Cuántos productos desea ordenar?"
+    Escribir "Â¿CuÃ¡ntos productos desea ordenar?"
     Leer N
 	
     Para i <- 1 Hasta N Hacer
-        ProcesarPedido(i, costo_total, texto_dato)
+        Escribir ""
+        Escribir "Pedido ", i
+        MostrarMenu()
+        Escribir "Seleccione una opciÃ³n (1-4): "
+        Leer opcion
+        
+        // Llamar a funciÃ³n que obtiene precio y nombre
+        ObtenerProducto(opcion, precio, nombre)
+        
+        Si precio > 0 Entonces
+            costo_total <- costo_total + precio
+            texto_dato <- texto_dato + " - " + nombre
+        FinSi
     FinPara
 	
-    MostrarFactura(costo_total, texto_dato)
-
+    Escribir ""
+    Escribir "===== FACTURA FINAL ====="
+    Escribir "Total a pagar: $", costo_total
+    Escribir texto_dato
 FinAlgoritmo
-
